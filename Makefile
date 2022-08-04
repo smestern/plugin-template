@@ -1,12 +1,9 @@
-PLUGIN_NAME = plugin_template
+PLUGIN_NAME = custom_module
 
-HEADERS = plugin-template.h
+HEADERS = custom_module.h
 
-SOURCES = plugin-template.cpp\
-          moc_plugin-template.cpp\
-
-LIBS = 
-
+SOURCES = custom_module.cpp\
+          moc_custom_module.cpp\
 ### Do not edit below this line ###
 
 include $(shell rtxi_plugin_config --pkgdata-dir)/Makefile.plugin_compile

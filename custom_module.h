@@ -23,14 +23,14 @@
 
 #include <default_gui_model.h>
 
-class PluginTemplate : public DefaultGUIModel
+class CustomModule : public DefaultGUIModel
 {
 
   Q_OBJECT
 
 public:
-  PluginTemplate(void);
-  virtual ~PluginTemplate(void);
+  CustomModule(void);
+  virtual ~CustomModule(void);
 
   void execute(void);
   void createGUI(DefaultGUIModel::variable_t*, int);

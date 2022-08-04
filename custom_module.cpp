@@ -21,14 +21,16 @@
  * DefaultGUIModel with a custom GUI.
  */
 
-#include "plugin-template.h"
+#include "custom_module.h"
 #include <iostream>
 #include <main_window.h>
+#include "netsim.h"
+
 
 extern "C" Plugin::Object*
 createRTXIPlugin(void)
 {
-  return new PluginTemplate();
+  return new CustomModule();
 }
 
 static DefaultGUIModel::variable_t vars[] = {
@@ -43,10 +45,10 @@ static DefaultGUIModel::variable_t vars[] = {
 
 static size_t num_vars = sizeof(vars) / sizeof(DefaultGUIModel::variable_t);
 
-PluginTemplate::PluginTemplate(void)
-  : DefaultGUIModel("PluginTemplate with Custom GUI", ::vars, ::num_vars)
+CustomModule::CustomModule(void)
+  : DefaultGUIModel("CustomModule with Custom GUI", ::vars, ::num_vars)
 {
-  setWhatsThis("<p><b>PluginTemplate:</b><br>QWhatsThis description.</p>");
+  setWhatsThis("<p><b>CustomModule:</b><br>QWhatsThis description.</p>");
   DefaultGUIModel::createGUI(vars,
                              num_vars); // this is required to create the GUI
   customizeGUI();
@@ -58,25 +60,26 @@ PluginTemplate::PluginTemplate(void)
   QTimer::singleShot(0, this, SLOT(resizeMe()));
 }
 
-PluginTemplate::~PluginTemplate(void)
+CustomModule::~CustomModule(void)
 {
 }
 
 void
-PluginTemplate::execute(void)
+CustomModule::execute(void)
 {
+  V = input(0)
   return;
 }
 
 void
-PluginTemplate::initParameters(void)
+CustomModule::initParameters(void)
 {
   some_parameter = 0;
   some_state = 0;
 }
 
 void
-PluginTemplate::update(DefaultGUIModel::update_flags_t flag)
+CustomModule::update(DefaultGUIModel::update_flags_t flag)
 {
   switch (flag) {
     case INIT:
@@ -105,7 +108,7 @@ PluginTemplate::update(DefaultGUIModel::update_flags_t flag)
 }
 
 void
-PluginTemplate::customizeGUI(void)
+CustomModule::customizeGUI(void)
 {
   QGridLayout* customlayout = DefaultGUIModel::getLayout();
 
@@ -126,11 +129,11 @@ PluginTemplate::customizeGUI(void)
 
 // functions designated as Qt slots are implemented as regular C++ functions
 void
-PluginTemplate::aBttn_event(void)
+CustomModule::aBttn_event(void)
 {
 }
 
 void
-PluginTemplate::bBttn_event(void)
+CustomModule::bBttn_event(void)
 {
 }
